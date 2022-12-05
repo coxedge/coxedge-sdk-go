@@ -1,14 +1,18 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/hashicorp/terraform-plugin-log/tflog"
 	"net/http"
 	"time"
-
-	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
 const TaskSuccess = "SUCCESS"

@@ -1,4 +1,4 @@
-package coxedgesdkgo
+package apiclient
 
 import (
 	"encoding/json"

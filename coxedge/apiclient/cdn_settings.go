@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"bytes"
@@ -6,7 +11,7 @@ import (
 	"net/http"
 )
 
-// GetCDNSettings Get cdnSettings in account by id
+//GetCDNSettings Get cdnSettings in account by id
 func (c *Client) GetCDNSettings(environmentName string, id string, organizationId string) (*CDNSettings, error) {
 	//Create the request
 	request, err := http.NewRequest("GET",
@@ -32,7 +37,7 @@ func (c *Client) GetCDNSettings(environmentName string, id string, organizationI
 	return &wrappedAPIStruct.Data, nil
 }
 
-// UpdateCDNSettings Update a cdnSettings
+//UpdateCDNSettings Update a cdnSettings
 func (c *Client) UpdateCDNSettings(cdnSettingsId string, newCDNSettings CDNSettings, organizationId string) (*TaskStatusResponse, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newCDNSettings)

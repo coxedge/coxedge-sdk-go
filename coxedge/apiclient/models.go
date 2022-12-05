@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"time"
@@ -212,7 +217,7 @@ type WorkloadInstance struct {
 	Status          string `json:"status"`
 }
 
-// Network Policy Rules
+//Network Policy Rules
 type NetworkPolicyRule struct {
 	Id              string   `json:"id,omitempty"`
 	StackId         string   `json:"stackId,omitempty"`
@@ -258,7 +263,7 @@ type WrappedImages struct {
 	Data []Image `json:"data"`
 }
 
-// Site
+//Site
 type Site struct {
 	Id              string               `json:"id,omitempty"`
 	StackId         string               `json:"stackId,omitempty"`
@@ -285,7 +290,7 @@ type WrappedSites struct {
 	Data []Site `json:"data"`
 }
 
-// Origin Settings
+//Origin Settings
 type OriginSettings struct {
 	EnvironmentName          string               `json:"-"`
 	Id                       string               `json:"id,omitempty"`
@@ -319,7 +324,7 @@ type WrappedOriginSettingsSet struct {
 	Data []OriginSettings
 }
 
-// Delivery Domain
+//Delivery Domain
 type DeliveryDomain struct {
 	Id        string `json:"id,omitempty"`
 	Domain    string `json:"domain,omitempty"`
@@ -336,7 +341,7 @@ type WrappedDeliveryDomains struct {
 	Data []DeliveryDomain `json:"data"`
 }
 
-// CDNSettings
+//CDNSettings
 type CDNSettings struct {
 	EnvironmentName               string   `json:"-"`
 	SiteId                        string   `json:"siteId,omitempty"`
@@ -390,7 +395,7 @@ type CDNPurgeOptions struct {
 	} `json:"items,omitempty"`
 }
 
-// WAF
+//WAF
 type WAFSettings struct {
 	EnvironmentName             string                         `json:"-"`
 	Id                          string                         `json:"id,omitempty"`
@@ -605,7 +610,7 @@ type WrappedWAFSettingsSet struct {
 	Data []WAFSettings `json:"data"`
 }
 
-// Firewall Rule
+//Firewall Rule
 type FirewallRule struct {
 	Action  string `json:"action,omitempty"`
 	Enabled bool   `json:"enabled,omitempty"`
@@ -624,7 +629,7 @@ type WrappedFirewallRules struct {
 	Data []FirewallRule `json:"data"`
 }
 
-// Script
+//Script
 type Script struct {
 	Id        string   `json:"id,omitempty"`
 	StackId   string   `json:"stackId,omitempty"`
@@ -644,7 +649,7 @@ type WrappedScripts struct {
 	Data []Script `json:"data,omitempty"`
 }
 
-// Edge Logic
+//Edge Logic
 type EdgeLogic struct {
 	AllowEmptyReferrer        bool     `json:"allowEmptyReferrer,omitempty"`
 	ForceWwwEnabled           bool     `json:"forceWwwEnabled,omitempty"`

@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"bytes"
@@ -23,7 +28,7 @@ type NetworkPolicyList struct {
 	Ports           []string `json:"ports"`
 }
 
-// GetNetworkPolicyRules Get networkPolicyRules in account
+//GetNetworkPolicyRules Get networkPolicyRules in account
 func (c *Client) GetNetworkPolicyRules(environmentName string, organizationId string) ([]NetworkPolicyRule, error) {
 	request, err := http.NewRequest("GET",
 		CoxEdgeAPIBase+"/services/"+CoxEdgeServiceCode+"/"+environmentName+"/networkpolicyrules"+"?org_id="+organizationId,
@@ -68,7 +73,7 @@ func (c *Client) GetNetworkPolicyRuleWorkload(environmentName string, id string,
 	return wrappedAPIStruct.Data, nil
 }
 
-// GetNetworkPolicyRule Get networkPolicyRule in account by id
+//GetNetworkPolicyRule Get networkPolicyRule in account by id
 func (c *Client) GetNetworkPolicyRule(environmentName string, id string, organizationId string) (*NetworkPolicyRule, error) {
 	//Create the request
 	request, err := http.NewRequest("GET",
@@ -93,7 +98,7 @@ func (c *Client) GetNetworkPolicyRule(environmentName string, id string, organiz
 	return &wrappedAPIStruct.Data, nil
 }
 
-// CreateNetworkPolicyRule Create the networkPolicyRule
+//CreateNetworkPolicyRule Create the networkPolicyRule
 func (c *Client) CreateNetworkPolicyRule(newNetworkPolicyRule NetworkPolicyRuleCreateRequest, organizationId string) ([]NetworkPolicyRule, error) {
 	var networkResponse []NetworkPolicyRule
 	//Marshal the request
@@ -127,7 +132,7 @@ func (c *Client) CreateNetworkPolicyRule(newNetworkPolicyRule NetworkPolicyRuleC
 
 }
 
-// UpdateNetworkPolicyRule Update a networkPolicyRule
+//UpdateNetworkPolicyRule Update a networkPolicyRule
 func (c *Client) UpdateNetworkPolicyRule(networkPolicyRuleId string, newNetworkPolicyRule NetworkPolicyRuleCreateRequest, organizationId string) ([]NetworkPolicyRule, error) {
 	var networkPolicy []NetworkPolicyRule
 
@@ -162,7 +167,7 @@ func (c *Client) UpdateNetworkPolicyRule(networkPolicyRuleId string, newNetworkP
 	return networkPolicy, nil
 }
 
-// DeleteNetworkPolicyRule Delete networkPolicyRule in account by id
+//DeleteNetworkPolicyRule Delete networkPolicyRule in account by id
 func (c *Client) DeleteNetworkPolicyRule(environmentName string, id string, organizationId string, newNetworkPolicyRule NetworkPolicyRuleCreateRequest) error {
 	for _, entry := range newNetworkPolicyRule.NetworkPolicy {
 		//Create the request

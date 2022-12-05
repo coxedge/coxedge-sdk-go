@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"bytes"
@@ -6,7 +11,7 @@ import (
 	"net/http"
 )
 
-// GetFirewallRules Get FirewallRules in account
+//GetFirewallRules Get FirewallRules in account
 func (c *Client) GetFirewallRules(environmentName string, siteId string, organizationId string) ([]FirewallRule, error) {
 	request, err := http.NewRequest("GET", CoxEdgeAPIBase+"/services/"+CoxEdgeServiceCode+"/"+environmentName+"/firewallrules?siteId="+siteId+"&org_id="+organizationId, nil)
 	if err != nil {
@@ -26,7 +31,7 @@ func (c *Client) GetFirewallRules(environmentName string, siteId string, organiz
 	return wrappedAPIStruct.Data, nil
 }
 
-// GetFirewallRule Get FirewallRule in account by id
+//GetFirewallRule Get FirewallRule in account by id
 func (c *Client) GetFirewallRule(environmentName string, siteId string, id string, organizationId string) (*FirewallRule, error) {
 	//Create the request
 	request, err := http.NewRequest("GET", CoxEdgeAPIBase+"/services/"+CoxEdgeServiceCode+"/"+environmentName+"/firewallrules/"+id+"?siteId="+siteId+"&org_id="+organizationId, nil)
@@ -49,7 +54,7 @@ func (c *Client) GetFirewallRule(environmentName string, siteId string, id strin
 	return &wrappedAPIStruct.Data, nil
 }
 
-// CreateFirewallRule Create the FirewallRule
+//CreateFirewallRule Create the FirewallRule
 func (c *Client) CreateFirewallRule(environmentName string, newFirewallRule FirewallRule, organizationId string) (*TaskStatusResponse, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newFirewallRule)
@@ -75,7 +80,7 @@ func (c *Client) CreateFirewallRule(environmentName string, newFirewallRule Fire
 	return &wrappedAPIStruct, nil
 }
 
-// UpdateFirewallRule Update a FirewallRule
+//UpdateFirewallRule Update a FirewallRule
 func (c *Client) UpdateFirewallRule(environmentName string, firewallRuleId string, newFirewallRule FirewallRule, organizationId string) (*TaskStatusResponse, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newFirewallRule)
@@ -101,7 +106,7 @@ func (c *Client) UpdateFirewallRule(environmentName string, firewallRuleId strin
 	return &wrappedAPIStruct, nil
 }
 
-// DeleteFirewallRule Delete FirewallRule in account by id
+//DeleteFirewallRule Delete FirewallRule in account by id
 func (c *Client) DeleteFirewallRule(environmentName string, siteId string, id string, organizationId string) error {
 	//Create the request
 	request, err := http.NewRequest("DELETE", CoxEdgeAPIBase+"/services/"+CoxEdgeServiceCode+"/"+environmentName+"/firewallrules/"+id+"?siteId="+siteId+"&org_id="+organizationId, nil)

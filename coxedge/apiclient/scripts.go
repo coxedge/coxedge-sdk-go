@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"bytes"
@@ -12,7 +17,7 @@ type ScriptCreateRequest struct {
 	Code   string   `json:"code,omitempty"`
 }
 
-// GetScripts Get Scripts in account
+//GetScripts Get Scripts in account
 func (c *Client) GetScripts(siteId string, environmentName string, organizationId string) ([]Script, error) {
 	request, err := http.NewRequest("GET",
 		CoxEdgeAPIBase+"/services/"+CoxEdgeServiceCode+"/"+environmentName+"/scripts?siteId="+siteId+"&org_id="+organizationId, nil)
@@ -33,7 +38,7 @@ func (c *Client) GetScripts(siteId string, environmentName string, organizationI
 	return wrappedAPIStruct.Data, nil
 }
 
-// GetScript Get Script in account by id
+//GetScript Get Script in account by id
 func (c *Client) GetScript(id string, siteId string, environmentName string, organizationId string) (*Script, error) {
 	//Create the request
 	request, err := http.NewRequest("GET",
@@ -57,7 +62,7 @@ func (c *Client) GetScript(id string, siteId string, environmentName string, org
 	return &wrappedAPIStruct.Data, nil
 }
 
-// CreateScript Create the Script
+//CreateScript Create the Script
 func (c *Client) CreateScript(siteId string, environmentName string, newScript ScriptCreateRequest, organizationId string) (*TaskStatusResponse, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newScript)
@@ -84,7 +89,7 @@ func (c *Client) CreateScript(siteId string, environmentName string, newScript S
 	return &wrappedAPIStruct, nil
 }
 
-// UpdateScript Update a Script
+//UpdateScript Update a Script
 func (c *Client) UpdateScript(id string, siteId string, environmentName string, newScript ScriptCreateRequest, organizationId string) (*TaskStatusResponse, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newScript)
@@ -111,7 +116,7 @@ func (c *Client) UpdateScript(id string, siteId string, environmentName string, 
 	return &wrappedAPIStruct, nil
 }
 
-// DeleteScript Delete Script in account by id
+//DeleteScript Delete Script in account by id
 func (c *Client) DeleteScript(id string, siteId string, environmentName string, organizationId string) error {
 	//Create the request
 	request, err := http.NewRequest("DELETE",

@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"encoding/json"
@@ -6,7 +11,7 @@ import (
 	"net/http"
 )
 
-// GetOrganizations Get organizations in account
+//GetOrganizations Get organizations in account
 func (c *Client) GetOrganizations() ([]Organization, error) {
 	request, err := http.NewRequest("GET", CoxEdgeAPIBase+"/organizations", nil)
 	if err != nil {
@@ -26,7 +31,7 @@ func (c *Client) GetOrganizations() ([]Organization, error) {
 	return wrappedAPIStruct.Data, nil
 }
 
-// GetOrganization Get organizations in account by id
+//GetOrganization Get organizations in account by id
 func (c *Client) GetOrganization(id string) (*Organization, error) {
 	request, err := http.NewRequest("GET", CoxEdgeAPIBase+"/organizations/"+id, nil)
 	if err != nil {

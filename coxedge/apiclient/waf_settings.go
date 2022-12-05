@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"bytes"
@@ -6,7 +11,7 @@ import (
 	"net/http"
 )
 
-// GetWAFSettings Get wafSettings in account by id
+//GetWAFSettings Get wafSettings in account by id
 func (c *Client) GetWAFSettings(environmentName string, id string, organizationId string) (*WAFSettings, error) {
 	//Create the request
 	request, err := http.NewRequest("GET",
@@ -32,7 +37,7 @@ func (c *Client) GetWAFSettings(environmentName string, id string, organizationI
 	return &wrappedAPIStruct.Data, nil
 }
 
-// UpdateWAFSettings Update a wafSettings
+//UpdateWAFSettings Update a wafSettings
 func (c *Client) UpdateWAFSettings(wafSettingsId string, newWAFSettings WAFSettings, organizationId string) (*TaskStatusResponse, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newWAFSettings)

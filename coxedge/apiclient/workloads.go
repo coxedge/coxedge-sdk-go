@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"bytes"
@@ -30,7 +35,7 @@ type WorkloadCreateRequest struct {
 	Slug                          string                        `json:"slug,omitempty"`
 }
 
-// GetWorkloads Get workloads in account
+//GetWorkloads Get workloads in account
 func (c *Client) GetWorkloads(environmentName string, organizationId string) ([]Workload, error) {
 	request, err := http.NewRequest("GET",
 		CoxEdgeAPIBase+"/services/"+CoxEdgeServiceCode+"/"+environmentName+"/workloads?org_id="+organizationId,
@@ -53,7 +58,7 @@ func (c *Client) GetWorkloads(environmentName string, organizationId string) ([]
 	return wrappedAPIStruct.Data, nil
 }
 
-// GetWorkload Get workload in account by id
+//GetWorkload Get workload in account by id
 func (c *Client) GetWorkload(environmentName string, id string, organizationId string) (*Workload, error) {
 	//Create the request
 	request, err := http.NewRequest("GET",
@@ -79,7 +84,7 @@ func (c *Client) GetWorkload(environmentName string, id string, organizationId s
 	return &wrappedAPIStruct.Data, nil
 }
 
-// CreateWorkload Create the workload
+//CreateWorkload Create the workload
 func (c *Client) CreateWorkload(newWorkload WorkloadCreateRequest, organizationId string) (*TaskStatusResponse, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newWorkload)
@@ -108,7 +113,7 @@ func (c *Client) CreateWorkload(newWorkload WorkloadCreateRequest, organizationI
 	return &wrappedAPIStruct, nil
 }
 
-// UpdateWorkload Update a workload
+//UpdateWorkload Update a workload
 func (c *Client) UpdateWorkload(workloadId string, newWorkload WorkloadCreateRequest, organizationId string) (*TaskStatusResponse, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newWorkload)
@@ -137,7 +142,7 @@ func (c *Client) UpdateWorkload(workloadId string, newWorkload WorkloadCreateReq
 	return &wrappedAPIStruct, nil
 }
 
-// DeleteWorkload Delete workload in account by id
+//DeleteWorkload Delete workload in account by id
 func (c *Client) DeleteWorkload(environmentName string, id string, organizationId string) error {
 	//Create the request
 	request, err := http.NewRequest("DELETE",

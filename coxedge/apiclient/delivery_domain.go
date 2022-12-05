@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"bytes"
@@ -11,7 +16,7 @@ type DeliveryDomainCreateRequest struct {
 	Domain          string `json:"domain"`
 }
 
-// GetDeliveryDomains Get deliveryDomains in account
+//GetDeliveryDomains Get deliveryDomains in account
 func (c *Client) GetDeliveryDomains(environmentName string, organizationId string) ([]DeliveryDomain, error) {
 	request, err := http.NewRequest("GET",
 		CoxEdgeAPIBase+"/services/"+CoxEdgeServiceCode+"/"+environmentName+"/deliverydomains?org_id="+organizationId,
@@ -34,7 +39,7 @@ func (c *Client) GetDeliveryDomains(environmentName string, organizationId strin
 	return wrappedAPIStruct.Data, nil
 }
 
-// GetDeliveryDomain Get deliveryDomain in account by id
+//GetDeliveryDomain Get deliveryDomain in account by id
 func (c *Client) GetDeliveryDomain(environmentName string, id string, organizationId string) (*DeliveryDomain, error) {
 	//Create the request
 	request, err := http.NewRequest("GET",
@@ -60,7 +65,7 @@ func (c *Client) GetDeliveryDomain(environmentName string, id string, organizati
 	return &wrappedAPIStruct.Data, nil
 }
 
-// CreateDeliveryDomain Create the deliveryDomain
+//CreateDeliveryDomain Create the deliveryDomain
 func (c *Client) CreateDeliveryDomain(siteId string, newDeliveryDomain DeliveryDomainCreateRequest, organizationId string) (*TaskStatusResponse, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newDeliveryDomain)
@@ -89,7 +94,7 @@ func (c *Client) CreateDeliveryDomain(siteId string, newDeliveryDomain DeliveryD
 	return &taskStatusResp, nil
 }
 
-// DeleteDeliveryDomain Delete deliveryDomain in account by id
+//DeleteDeliveryDomain Delete deliveryDomain in account by id
 func (c *Client) DeleteDeliveryDomain(environmentName string, id string, organizationId string) error {
 	//Create the request
 	request, err := http.NewRequest("DELETE",

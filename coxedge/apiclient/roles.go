@@ -1,11 +1,11 @@
-package coxedgesdkgo
+package apiclient
 
 import (
 	"encoding/json"
 	"net/http"
 )
 
-// GetRoles Get organizations in account
+//GetRoles Get organizations in account
 func (c *Client) GetRoles() ([]Roles, error) {
 	request, err := http.NewRequest("GET", CoxEdgeAPIBase+"/roles", nil)
 	if err != nil {

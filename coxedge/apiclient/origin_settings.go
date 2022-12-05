@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"bytes"
@@ -7,7 +12,7 @@ import (
 	"net/http"
 )
 
-// GetOriginSettings Get originSettings in account by id
+//GetOriginSettings Get originSettings in account by id
 func (c *Client) GetOriginSettings(environmentName string, id string, organizationId string) (*OriginSettings, error) {
 	//Create the request
 	request, err := http.NewRequest("GET",
@@ -33,12 +38,12 @@ func (c *Client) GetOriginSettings(environmentName string, id string, organizati
 	return &wrappedAPIStruct.Data, nil
 }
 
-// CreateOriginSettings Create the originSettings
+//CreateOriginSettings Create the originSettings
 func (c *Client) CreateOriginSettings(newOriginSettings OriginSettings) (*OriginSettings, error) {
 	return nil, errors.New("cannot create OriginSettings")
 }
 
-// UpdateOriginSettings Update a originSettings
+//UpdateOriginSettings Update a originSettings
 func (c *Client) UpdateOriginSettings(originSettingsId string, newOriginSettings OriginSettings, organizationId string) (*OriginSettings, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newOriginSettings)
@@ -67,7 +72,7 @@ func (c *Client) UpdateOriginSettings(originSettingsId string, newOriginSettings
 	return &wrappedAPIStruct.Data, nil
 }
 
-// DeleteOriginSettings Delete originSettings in account by id
+//DeleteOriginSettings Delete originSettings in account by id
 func (c *Client) DeleteOriginSettings(environmentName string, id string) error {
 	return errors.New("cannot delete OriginSettings")
 }

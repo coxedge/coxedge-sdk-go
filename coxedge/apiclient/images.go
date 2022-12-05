@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"encoding/json"
@@ -6,7 +11,7 @@ import (
 	"net/http"
 )
 
-// GetImages Get images in account
+//GetImages Get images in account
 func (c *Client) GetImages(environmentName string) ([]Image, error) {
 	request, err := http.NewRequest("GET", CoxEdgeAPIBase+"/services/"+CoxEdgeServiceCode+"/"+environmentName+"/images", nil)
 	if err != nil {
@@ -26,7 +31,7 @@ func (c *Client) GetImages(environmentName string) ([]Image, error) {
 	return wrappedAPIStruct.Data, nil
 }
 
-// GetImage Get images in account by id
+//GetImage Get images in account by id
 func (c *Client) GetImage(environmentName string, id string) (*Image, error) {
 	request, err := http.NewRequest("GET", CoxEdgeAPIBase+"/services/"+CoxEdgeServiceCode+"/"+environmentName+"/images/"+id, nil)
 	if err != nil {

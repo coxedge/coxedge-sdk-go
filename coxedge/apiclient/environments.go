@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"bytes"
@@ -29,7 +34,7 @@ type EnvironmentMembersRequest struct {
 	Role IdOnlyHelper `json:"role,omitempty"`
 }
 
-// GetEnvironments Get Environments in account
+//GetEnvironments Get Environments in account
 func (c *Client) GetEnvironments() ([]Environment, error) {
 	request, err := http.NewRequest("GET", CoxEdgeAPIBase+"/environments", nil)
 	if err != nil {
@@ -49,7 +54,7 @@ func (c *Client) GetEnvironments() ([]Environment, error) {
 	return wrappedAPIStruct.Data, nil
 }
 
-// GetEnvironment Get Environment in account by id
+//GetEnvironment Get Environment in account by id
 func (c *Client) GetEnvironment(id string) (*Environment, error) {
 	//Create the request
 	request, err := http.NewRequest("GET", CoxEdgeAPIBase+"/environments/"+id, nil)
@@ -72,7 +77,7 @@ func (c *Client) GetEnvironment(id string) (*Environment, error) {
 	return &wrappedAPIStruct.Data, nil
 }
 
-// CreateEnvironment Create the Environment
+//CreateEnvironment Create the Environment
 func (c *Client) CreateEnvironment(newEnvironment EnvironmentCreateRequest) (*Environment, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newEnvironment)
@@ -98,7 +103,7 @@ func (c *Client) CreateEnvironment(newEnvironment EnvironmentCreateRequest) (*En
 	return &wrappedAPIStruct.Data, nil
 }
 
-// UpdateEnvironment Update a Environment
+//UpdateEnvironment Update a Environment
 func (c *Client) UpdateEnvironment(EnvironmentId string, newEnvironment EnvironmentCreateRequest) (*Environment, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newEnvironment)
@@ -124,7 +129,7 @@ func (c *Client) UpdateEnvironment(EnvironmentId string, newEnvironment Environm
 	return &wrappedAPIStruct.Data, nil
 }
 
-// UpdateEnvironmentMembership Update a Environment membership
+//UpdateEnvironmentMembership Update a Environment membership
 func (c *Client) UpdateEnvironmentMembership(EnvironmentId string, newEnvironment EnvironmentMembershipRequest) (*Environment, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newEnvironment)
@@ -150,7 +155,7 @@ func (c *Client) UpdateEnvironmentMembership(EnvironmentId string, newEnvironmen
 	return &wrappedAPIStruct.Data, nil
 }
 
-// UpdateEnvironmentMember Update a Environment members
+//UpdateEnvironmentMember Update a Environment members
 func (c *Client) UpdateEnvironmentMember(EnvironmentId string, newEnvironment EnvironmentMembersRequest) (*Environment, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newEnvironment)
@@ -176,7 +181,7 @@ func (c *Client) UpdateEnvironmentMember(EnvironmentId string, newEnvironment En
 	return &wrappedAPIStruct.Data, nil
 }
 
-// DeleteEnvironment Delete Environment in account by id
+//DeleteEnvironment Delete Environment in account by id
 func (c *Client) DeleteEnvironment(id string) error {
 	//Create the request
 	request, err := http.NewRequest("DELETE", CoxEdgeAPIBase+"/environments/"+id, nil)

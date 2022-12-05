@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"net/http"
@@ -53,7 +58,7 @@ func TestUserDelete(t *testing.T) {
 	}
 }
 
-// TestUnlockUser Unlock user in account by id
+//TestUnlockUser Unlock user in account by id
 func (c *Client) TestUnlockUser(id string) error {
 	//Create the request
 	request, err := http.NewRequest("POST", CoxEdgeAPIBase+"/users/"+id+"/unlock", nil)

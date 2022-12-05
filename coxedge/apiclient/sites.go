@@ -1,4 +1,9 @@
-package coxedgesdkgo
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+package apiclient
 
 import (
 	"bytes"
@@ -17,7 +22,7 @@ type SiteCreateRequest struct {
 	Password        string   `json:"password,omitempty"`
 }
 
-// GetSites Get sites in account
+//GetSites Get sites in account
 func (c *Client) GetSites(environmentName string, organizationId string) ([]Site, error) {
 	request, err := http.NewRequest("GET",
 		CoxEdgeAPIBase+"/services/"+CoxEdgeServiceCode+"/"+environmentName+"/sites?org_id="+organizationId,
@@ -40,7 +45,7 @@ func (c *Client) GetSites(environmentName string, organizationId string) ([]Site
 	return wrappedAPIStruct.Data, nil
 }
 
-// GetSite Get site in account by id
+//GetSite Get site in account by id
 func (c *Client) GetSite(environmentName string, id string, organizationId string) (*Site, error) {
 	//Create the request
 	request, err := http.NewRequest("GET",
@@ -66,7 +71,7 @@ func (c *Client) GetSite(environmentName string, id string, organizationId strin
 	return &wrappedAPIStruct.Data, nil
 }
 
-// CreateSite Create the site
+//CreateSite Create the site
 func (c *Client) CreateSite(newSite SiteCreateRequest, organizationId string) (*TaskStatusResponse, error) {
 	//Marshal the request
 	jsonBytes, err := json.Marshal(newSite)
@@ -95,7 +100,7 @@ func (c *Client) CreateSite(newSite SiteCreateRequest, organizationId string) (*
 	return &wrappedAPIStruct, nil
 }
 
-// UpdateSite Update a site
+//UpdateSite Update a site
 func (c *Client) UpdateSite(siteId string, environmentName string, operationValue string, organizationId string) (*TaskStatusResponse, error) {
 	//Create the request
 	request, err := http.NewRequest("POST",
@@ -117,7 +122,7 @@ func (c *Client) UpdateSite(siteId string, environmentName string, operationValu
 	return &wrappedAPIStruct, nil
 }
 
-// DeleteSite Delete site in account by id
+//DeleteSite Delete site in account by id
 func (c *Client) DeleteSite(environmentName string, id string, organizationId string) error {
 	//Create the request
 	request, err := http.NewRequest("DELETE",
